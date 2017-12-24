@@ -1,0 +1,19 @@
+<% if flash[:notice] %>
+  <p class="red"><%= flash[:notice] %>
+<% end %>
+
+<h1>Welcome <%= @user.name %></h1>
+
+<% if current_user.admin == true %>
+  <p>ADMIN</p>
+<% end %>
+
+<p><b>Name:</b> <%= @user.name %></p>
+<p><b>Height (in inches):</b> <%= @user.height %></p>
+<p><b>Number of Tickets:</b> <%= @user.tickets %></p>
+<p><b>Mood:</b> <%= @user.mood %></p>
+
+
+<p><%= link_to "Edit", edit_user_path %></p>
+<p><%= link_to "See attractions", attractions_path %></p>
+<p><%= link_to "Log Out", signout_path, method: 'post' %></p>

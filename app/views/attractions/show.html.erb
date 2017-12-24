@@ -1,0 +1,16 @@
+<h1><%= @attraction.name %></h1>
+
+<p><b>Name:</b> <%= @attraction.name %></p>
+<p><b>Tickets Required:</b> <%= @attraction.tickets %></p>
+<p><b>Height Requirement:</b> <%= @attraction.min_height %></p>
+<p><b>Nausea Rating:</b> <%= @attraction.nausea_rating %></p>
+<p><b>Happiness Rating:</b> <%= @attraction.happiness_rating %></p>
+
+<% if current_user.admin == true %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %><br>
+  <%= link_to "Delete Attraction", method: "delete" %>
+<% else %>
+  <%= form_tag(controller: "attractions", action: "ride", method: "post") do %>
+    <%= submit_tag "Go on this ride" %>
+  <% end %>
+<% end %>
